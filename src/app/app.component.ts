@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'basketboard';
   sideBarOpen = true;
-   public auth: any;
+  public auth: any;
 
   sideBarToggler(){
     this.sideBarOpen = !this.sideBarOpen;
