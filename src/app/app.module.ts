@@ -23,6 +23,7 @@ import { HomeComponent } from './modules/home/home.component';
 import { FormComponent } from './components/form/form.component';
 import { LoginComponent } from './modules/login/login.component';
 import { RegisterComponent } from './modules/register/register.component';
+import { JugadoresComponent } from './modules/jugadores/jugadores.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { RegisterComponent } from './modules/register/register.component';
     HomeComponent,
     FormComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    JugadoresComponent
   ],
   imports: [
     BrowserModule,

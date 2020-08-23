@@ -1,12 +1,12 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, DoCheck } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
-
+export class HeaderComponent implements OnInit, DoCheck {
+  public auth: any;
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter()
 
   constructor() { }
@@ -21,5 +21,9 @@ export class HeaderComponent implements OnInit {
         new Event('resize')
       );
     }, 300)
+  }
+
+  ngDoCheck() {
+    this.auth = JSON.parse(localStorage.getItem('auth'));
   }
 }
