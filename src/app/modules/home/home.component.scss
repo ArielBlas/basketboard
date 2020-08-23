@@ -1,0 +1,28 @@
+.homeContainer{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.imgContainer{
+    background-image: url('../../../assets/img/basketball.jpg');
+    background-size: 100% 100%;
+    height: 100%;
+
+    img{
+        color: honeydew;
+    }
+
+    h2{
+        color: #fff;
+        text-align: center;
+        letter-spacing: 2px;
+        margin-top: 10%;
+        font-size: 50px;
+    }
+}
+
+.formContainer{
+    display: flex;
+    justify-content: center;
+}

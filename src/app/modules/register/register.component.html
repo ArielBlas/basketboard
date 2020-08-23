@@ -1,0 +1,23 @@
+<form class="formContent" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+    <mat-form-field hideRequiredMarker appearance="outline" >
+        <mat-label for="nombre">Nombre</mat-label>
+        <input matInput type="text" name="nombre" #nombre="ngModel" [(ngModel)]="register.nombre" required>
+    </mat-form-field>
+    <mat-form-field hideRequiredMarker appearance="outline">
+        <mat-label for="apellido">Apellido</mat-label>
+        <input matInput type="text" name="apellido" #apellido="ngModel" [(ngModel)]="register.apellido" required>
+    </mat-form-field>
+    <mat-form-field hideRequiredMarker appearance="outline">
+        <mat-label for="legajo">Legajo</mat-label>
+        <input matInput type="text" name="legajo" #legajo="ngModel" [(ngModel)]="register.legajo" required>
+    </mat-form-field>
+    <mat-form-field hideRequiredMarker appearance="outline" >
+        <mat-label for="email">Email</mat-label>
+        <input matInput type="email" name="email" #email="ngModel" [(ngModel)]="register.email" required>
+    </mat-form-field>
+    <mat-form-field hideRequiredMarker appearance="outline">
+        <mat-label for="password">Contraseña</mat-label>
+        <input matInput type="password" name="password" #password="ngModel" [(ngModel)]="register.password" required>
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="!registerForm.form.valid">Registrarse</button>
+</form>
