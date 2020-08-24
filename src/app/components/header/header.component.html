@@ -1,10 +1,10 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" *ngIf="auth">
     <mat-toolbar-row>
         <button mat-icon-button (click)="toggleSideBar()">
             <mat-icon>menu</mat-icon>
         </button>
         
-        <span>APP LOGO</span>
+        <span>Basquetboard</span>
 
         <div fxFlex FxLayout="row" fxLayoutAlign="flex-end" >
             <ul FxLayout="row" fxLayoutAlign="20px">

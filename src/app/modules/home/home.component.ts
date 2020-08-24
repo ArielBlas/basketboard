@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, DoCheck {
+export class HomeComponent implements OnInit, DoCheck{
 
   public title: string;
   public auth: any;
@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit, DoCheck {
     this.title = 'Basquetboard';
   }
   ngOnInit(): void{}
+
 
   ngDoCheck() {
     this.auth = JSON.parse(localStorage.getItem('auth'));

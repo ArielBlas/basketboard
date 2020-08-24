@@ -1,3 +1,4 @@
+<div *ngIf="auth && auth.id">
 <div>
     <app-widget-area></app-widget-area>
 </div>
@@ -36,4 +37,5 @@
     <mat-card  fxFlex="38">
         <app-widget-pie [data]="pieChart"></app-widget-pie>
     </mat-card >
+</div>
 </div>

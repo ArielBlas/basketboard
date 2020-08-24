@@ -19,7 +19,7 @@
           "options": {
             "allowedCommonJsDependencies": [
               "highcharts"
-           ],      
+            ],
             "outputPath": "dist/basketboard",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -130,5 +130,8 @@
       }
     }
   },
-  "defaultProject": "basketboard"
+  "defaultProject": "basketboard",
+  "cli": {
+    "analytics": false
+  }
 }
