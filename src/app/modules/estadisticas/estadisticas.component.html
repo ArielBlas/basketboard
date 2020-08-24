@@ -1,0 +1,63 @@
+<form #estadisticasForm="ngForm" (ngSubmit)="onSubmit()">
+    <mat-form-field hideRequiredMarker appearance="outline">
+        <mat-label for="user_id">Tirador</mat-label>
+        <mat-select name="user_id" #user_id="ngModel" [(ngModel)]="tiros.user_id" required>
+          <mat-option *ngFor="let food of auth.jugadores" [value]="food.id">
+            {{food.nombre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    <mat-form-field hideRequiredMarker appearance="outline">
+    <mat-label for="encesto">Encesto</mat-label>
+    <mat-select name="encesto" #encesto="ngModel" [(ngModel)]="tiros.encesto" required>
+        <mat-option [value]="true">Si</mat-option>
+        <mat-option [value]="false">No</mat-option>
+    </mat-select>
+    </mat-form-field>
+
+    <mat-form-field hideRequiredMarker appearance="outline">
+        <mat-label for="distancia">distancia en m</mat-label>
+        <input matInput type="number" name="distancia" #distancia="ngModel" [(ngModel)]="tiros.distancia" required>
+    </mat-form-field>
+
+    <mat-form-field hideRequiredMarker appearance="outline">
+        <mat-label for="posiciones">Posiciones</mat-label>
+        <mat-select multiple name="posiciones" #encesto="ngModel" [(ngModel)]="tiros.posiciones" required>
+          <mat-option *ngFor="let tiros of tipos_de_tiros" [value]="tiros">{{tiros}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+   
+    <button type="submit" mat-raised-button color="primary" [disabled]="!estadisticasForm.form.valid">Ingresar</button>
+</form>
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="tirador">
+      <th mat-header-cell *matHeaderCellDef>Tirador</th>
+      <td mat-cell *matCellDef="let element"> {{element.users_tiros.nombre}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="encesto">
+        <th mat-header-cell *matHeaderCellDef>Encesto</th>
+        <td mat-cell *matCellDef="let element"> {{element.encesto == true ? 'Si' : 'No'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="distancia">
+        <th mat-header-cell *matHeaderCellDef>Distancia</th>
+        <td mat-cell *matCellDef="let element"> {{element.distancia}} m</td>
+    </ng-container>
+
+    <ng-container matColumnDef="posiciones">
+        <th mat-header-cell *matHeaderCellDef>Posiciones</th>
+        <td mat-cell *matCellDef="let element"> {{element.posiciones}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
