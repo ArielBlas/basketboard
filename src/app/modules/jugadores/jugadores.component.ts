@@ -53,10 +53,6 @@ export class JugadoresComponent implements OnInit, DoCheck {
     }  
   }
 
-
-  
-  
-
   logData(row){
     console.log(row)
   }

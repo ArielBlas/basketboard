@@ -24,6 +24,7 @@ import { FormComponent } from './components/form/form.component';
 import { LoginComponent } from './modules/login/login.component';
 import { RegisterComponent } from './modules/register/register.component';
 import { JugadoresComponent } from './modules/jugadores/jugadores.component';
+import { EstadisticasComponent } from './modules/estadisticas/estadisticas.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { JugadoresComponent } from './modules/jugadores/jugadores.component';
     FormComponent,
     LoginComponent,
     RegisterComponent,
-    JugadoresComponent
+    JugadoresComponent,
+    EstadisticasComponent
   ],
   imports: [
     BrowserModule,
