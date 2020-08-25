@@ -13,15 +13,20 @@ export class DashboardComponent implements OnInit, DoCheck {
   cards = [];
   pieChart = [];
 
-  constructor(private dashboardService: DashboardService, private router: Router) { }
+  constructor(private dashboardService: DashboardService, private router: Router) {
+    this.auth = JSON.parse(localStorage.getItem('auth'));
+  }
 
   ngOnInit(): void {
+    this.auth = JSON.parse(localStorage.getItem('auth')); 
+
     this.bigChart = this.dashboardService.bigChart()
     this.cards = this.dashboardService.cards();
     this.pieChart = this.dashboardService.pieChart();
   }
 
   ngDoCheck() {
+
     this.auth = JSON.parse(localStorage.getItem('auth'));
 
     if(!this.auth){

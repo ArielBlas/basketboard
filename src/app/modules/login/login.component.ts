@@ -11,24 +11,7 @@ export class LoginComponent implements OnInit {
   public autenticado: boolean;
   private auth: any;
 
-  constructor() { 
-
-    // let users = [{
-    //   id: 1,
-    //   nombre:'Ariel',
-    //   apellido: 'Blas',
-    //   email: 'ariel@gmail.com',
-    //   password: '12345',
-    // },{
-    //   id: 2,
-    //   nombre:'Juan',
-    //   apellido: 'Carlos',
-    //   email: 'juan@gmail.com',
-    //   password: '12345',
-    // }]
-
-    //localStorage.setItem('users', JSON.stringify(users))
-  }
+  constructor() {}
 
   ngOnInit(): void {
     this.login = new Login('', '');

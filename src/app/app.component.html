@@ -1,5 +1,5 @@
 
-<div *ngIf="auth && auth.id" class="appContainer">
+<div *ngIf="auth && auth.id; else noAuth" class="appContainer">
     <app-header (toggleSideBarForMe)="sideBarToggler()"></app-header>
 
     <mat-drawer-container>
@@ -13,5 +13,8 @@
 
     <app-footer></app-footer>
 </div>
-<router-outlet></router-outlet>
+<ng-template #noAuth>
+    <router-outlet></router-outlet>
+</ng-template>
+
 

@@ -26,4 +26,8 @@ export class HeaderComponent implements OnInit, DoCheck {
   ngDoCheck() {
     this.auth = JSON.parse(localStorage.getItem('auth'));
   }
+
+  removeAuth(){
+    localStorage.removeItem('auth');
+  }
 }

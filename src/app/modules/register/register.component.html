@@ -1,4 +1,5 @@
 <form class="formContent" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+    <p>{{message}}</p>
     <mat-form-field hideRequiredMarker appearance="outline" >
         <mat-label for="nombre">Nombre</mat-label>
         <input matInput type="text" name="nombre" #nombre="ngModel" [(ngModel)]="register.nombre" required>
