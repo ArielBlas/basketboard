@@ -39,7 +39,6 @@ export class EstadisticasComponent implements OnInit, DoCheck {
     }
     
     this.players = arr
-    console.log('vamos que se puede', this.players)
   }
 
   ngOnInit(): void {
@@ -65,8 +64,6 @@ export class EstadisticasComponent implements OnInit, DoCheck {
         }
       }  
     }
-
-    console.log('este es el array de esdisticas',arr)
 
     this.ELEMENT_DATA = arr;
     this.displayedColumns = ['tirador', 'encesto', 'distancia', 'posiciones'];

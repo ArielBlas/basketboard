@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import * as Highcharts from 'highcharts';
-import HC_exporting from 'highcharts/modules/exporting';
 
 @Component({
   selector: 'app-widget-pie',
@@ -8,7 +7,6 @@ import HC_exporting from 'highcharts/modules/exporting';
   styleUrls: ['./pie.component.scss']
 })
 export class PieComponent implements OnInit {
-
   Highcharts = Highcharts;
   chartOptions = {};
 
@@ -25,10 +23,10 @@ export class PieComponent implements OnInit {
           type: 'pie'
       },
       title: {
-          text: 'Encesto de jugadores'
+          text: 'Porcentaje de tiros'
       },
       tooltip: {
-          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b> <br> Distancia: {point.distancia} m <br> Posiciones: {point.posiciones}'
       },
       accessibility: {
           point: {
@@ -52,13 +50,13 @@ export class PieComponent implements OnInit {
         enabled: false
       },
       series: [{
-          name: 'Brands',
+          name: 'Porcentaje',
           colorByPoint: true,
           data: this.data
       }]
   };
 
-    HC_exporting(Highcharts)
+
 
     setTimeout(() => {
       window.dispatchEvent(

@@ -4,8 +4,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DashboardService {
+  public estadisticas: any;
+  public users: any;
+  public pie: any;
+  
+  constructor() { 
+    this.estadisticas = JSON.parse(localStorage.getItem('tiros'));
+    this.users = JSON.parse(localStorage.getItem('users'));
+  }
 
-  constructor() { }
+  /* Probando highcharts */
 
   bigChart(){
     return[{
@@ -31,35 +39,29 @@ export class DashboardService {
   }
   
   pieChart(){
-    return [{
-      name: 'Chrome',
-      y: 61.41,
-      sliced: true,
-      selected: true
-  }, {
-      name: 'Internet Explorer',
-      y: 11.84
-  }, {
-      name: 'Firefox',
-      y: 10.85
-  }, {
-      name: 'Edge',
-      y: 4.67
-  }, {
-      name: 'Safari',
-      y: 4.18
-  }, {
-      name: 'Sogou Explorer',
-      y: 1.64
-  }, {
-      name: 'Opera',
-      y: 1.6
-  }, {
-      name: 'QQ',
-      y: 1.2
-  }, {
-      name: 'Other',
-      y: 2.61
-  }]
+    this.pie = [{
+      name: null,
+      y:null,
+      distancia: null,
+      posiciones: null
+    }]
+
+    if(this.estadisticas){
+      for(let tiros of this.estadisticas){
+        for(let user of this.users){
+          if(user.id == tiros.user_id){
+            if(tiros.encesto == true){  
+              this.pie.push({
+                  name: user.nombre,
+                  y: 100,
+                  distancia: tiros.distancia,
+                  posiciones: tiros.posiciones
+                })                      
+            }
+          }
+        }
+      }
+    }
+    return this.pie
   }
 }

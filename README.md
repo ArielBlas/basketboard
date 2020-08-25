@@ -1,27 +1,40 @@
 # Basketboard
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.6.
+## Instalando angular
 
-## Development server
+Para poder usar el proyecto se necesita el CLI de angular, los pasos para instalarlo son los siguientes:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Instalar [node](https://nodejs.org/es/) 
 
-## Code scaffolding
+- Con [npm](https://www.npmjs.com/) instalar el [CLI de angular](https://github.com/angular/angular-cli).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+npm install -g @angular/cli
+```
 
-## Build
+- De forma opcional se puede instalar [git](https://git-scm.com/) para clonar el repositorio directamente.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```bash
+git clone https://github.com/ArielBlas/basketboard.git
+```
 
-## Running unit tests
+- Despues hay que instalar las dependencias del proyecto.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm install
+```
 
-## Running end-to-end tests
+El último paso es ejecutar el proyecto para verificar que todo está en orden, para lo que hay dos opciones.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```bash
+ng serve
+```
 
-## Further help
+```bash
+ng build
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Cuando compilas el proyecto, pero no lo quieres mover de la carpeta donde se genera a la raíz o lo vas a colocar en una carpeta diferente puedes usar el siguiente comando:
+
+```bash
+ng build --base-href /basketboard/dist/ --prod
