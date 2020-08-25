@@ -1,4 +1,4 @@
-import { Component, OnChanges, DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +6,7 @@ import { Component, OnChanges, DoCheck } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent implements OnChanges, DoCheck {
+export class AppComponent implements OnInit {
   title = 'basketboard';
   sideBarOpen = true;
   public auth: any;
@@ -15,14 +15,14 @@ export class AppComponent implements OnChanges, DoCheck {
     this.sideBarOpen = !this.sideBarOpen;
   }
 
-  ngOnChanges(){
+  ngOnInit(){
     this.auth = JSON.parse(localStorage.getItem('auth'));
   }
 
-  ngDoCheck(){
-    if(!this.auth){
-      this.auth = JSON.parse(localStorage.getItem('auth'));
-    }
+  // ngDoCheck(){
+  //   if(!this.auth){
+  //     this.auth = JSON.parse(localStorage.getItem('auth'));
+  //   }
     
-  }
+  // }
 }
