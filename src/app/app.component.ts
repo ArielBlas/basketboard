@@ -21,7 +21,6 @@ export class AppComponent implements DoCheck {
   }
 
   ngDoCheck(){
-    console.log('Cambio')
     this.auth = JSON.parse(localStorage.getItem('auth'));
   }
 }
