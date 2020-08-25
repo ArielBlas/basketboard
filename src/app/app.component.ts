@@ -1,4 +1,5 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnChanges, DoCheck } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,23 +7,21 @@ import { Component, OnInit, DoCheck } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent implements OnInit {
-  title = 'basketboard';
+export class AppComponent implements DoCheck {
+  title = 'Basketboard';
   sideBarOpen = true;
   public auth: any;
+
+  constructor(private router: Router){
+    
+  }
 
   sideBarToggler(){
     this.sideBarOpen = !this.sideBarOpen;
   }
 
-  ngOnInit(){
+  ngDoCheck(){
+    console.log('Cambio')
     this.auth = JSON.parse(localStorage.getItem('auth'));
   }
-
-  // ngDoCheck(){
-  //   if(!this.auth){
-  //     this.auth = JSON.parse(localStorage.getItem('auth'));
-  //   }
-    
-  // }
 }

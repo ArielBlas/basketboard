@@ -1,9 +1,9 @@
-<form #estadisticasForm="ngForm" (ngSubmit)="onSubmit()">
+<form #estadisticasForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="auth">
     <mat-form-field hideRequiredMarker appearance="outline">
         <mat-label for="user_id">Tirador</mat-label>
         <mat-select name="user_id" #user_id="ngModel" [(ngModel)]="tiros.user_id" required>
-          <mat-option *ngFor="let food of auth.jugadores" [value]="food.id">
-            {{food.nombre}}
+          <mat-option *ngFor="let user of players" [value]="user.user_id">
+            {{user.nombre}}
           </mat-option>
         </mat-select>
       </mat-form-field>
