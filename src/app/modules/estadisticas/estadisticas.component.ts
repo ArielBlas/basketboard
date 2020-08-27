@@ -14,11 +14,8 @@ export interface PeriodicElement {
   styleUrls: ['./estadisticas.component.scss']
 })
 export class EstadisticasComponent implements OnInit, DoCheck {
-  public getJugadores: any;
   public players: any;
   public tiros: Tiros;
-  public tirosDB: any;
-  public getTiros: any;
   public users: any;
   public auth: any;
   public ELEMENT_DATA : PeriodicElement[];
@@ -27,40 +24,30 @@ export class EstadisticasComponent implements OnInit, DoCheck {
   tipos_de_tiros: string[] = ['Puntas', 'Corto', 'Frente', 'Lado izquierdo', 'Lado derecho'];
 
   constructor(private router: Router) { 
-    let arr = []
-    this.auth = JSON.parse(localStorage.getItem('auth')) 
-    this.getJugadores = JSON.parse(localStorage.getItem('jugadores'));
-    if(this.getJugadores){
-      for(let jugadores of this.getJugadores){    
-        if(this.auth && this.auth.id === jugadores.coach_id){
-          arr.push(jugadores)
-        }
-      } 
+    this.auth = JSON.parse(localStorage.getItem('auth'));
+    if(this.auth){
+      this.players = this.auth.jugadores
     }
     
-    this.players = arr
   }
 
   ngOnInit(): void {
-    this.tiros = new Tiros(null, null, null, null, null, []);
+    this.tiros = new Tiros(null,null, null, null, []);
     this.auth = JSON.parse(localStorage.getItem('auth')) 
   }
 
   ngDoCheck(){
     let arr=[];
-    this.getTiros = JSON.parse(localStorage.getItem('tiros')) 
+    this.auth = JSON.parse(localStorage.getItem('auth')) 
     this.users = JSON.parse(localStorage.getItem('users')) 
 
-    if(this.getTiros){
-      for(let tiros of this.getTiros){
-        for(let user of this.users){
-          if(user.id == tiros.user_id){      
-            tiros.users_tiros = user;
-
-            if(this.auth && this.auth.id === tiros.coach_id){
-              arr.push(tiros)
-            }
+    if(this.auth){
+      for(let player of this.auth.jugadores){
+        for(let tiros of player.tiros){
+          if(tiros.user_id == player.id){
+            tiros.nombre = player.nombre
           }
+          arr.push(tiros)
         }
       }  
     }
@@ -75,20 +62,24 @@ export class EstadisticasComponent implements OnInit, DoCheck {
   }
 
   onSubmit(){
-    if(localStorage.getItem('tiros') === null){
-      this.tirosDB = [];
-    }else{
-      this.tirosDB = JSON.parse(localStorage.getItem('tiros'));
+
+    for(let player of this.auth.jugadores){
+      if(player.id == this.tiros.user_id){
+        this.tiros.id = player.tiros.length +1;
+        player.tiros.push(this.tiros);
+      }
     }
 
-    this.tiros.id= this.tirosDB.length+1;
-    this.tiros.coach_id = this.auth.id;
+    localStorage.setItem('auth', JSON.stringify(this.auth))
 
-    this.tirosDB.push(this.tiros);
+    for(let user of this.users){
+      if(user.id == this.auth.id){
+        user.jugadores = this.auth.jugadores
+      }
+    }
 
-    localStorage.setItem('tiros', JSON.stringify(this.tirosDB))
-
-    
+    localStorage.setItem('users', JSON.stringify(this.users))
+ 
   }
 
 }
